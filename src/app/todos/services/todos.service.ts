@@ -33,4 +33,18 @@ export class TodosService {
         this.todos$.next(data);
       });
   }
+
+  removeTodo(todoId: string) {
+    this.http
+      .delete<CommonResponse>(`${environment.baseURL}/todo-lists/${todoId}`)
+      .pipe(
+        map(() => {
+          const stateTodos = this.todos$.getValue();
+          return stateTodos.filter((todo) => todo.id !== todoId);
+        }),
+      )
+      .subscribe((data) => {
+        this.todos$.next(data);
+      });
+  }
 }
