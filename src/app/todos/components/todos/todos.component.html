@@ -11,4 +11,5 @@
   *ngFor="let todo of todos$ | async"
   [todo]="todo"
   (removeTodoEvent)="removeTodo($event)"
+  (changeTodoTitleEvent)="changeTodoTitle($event)"
 ></tl-todo>

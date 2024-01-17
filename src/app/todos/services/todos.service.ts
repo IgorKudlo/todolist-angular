@@ -47,4 +47,19 @@ export class TodosService {
         this.todos$.next(data);
       });
   }
+
+  updateTodoTitle(todoId: string, todoTitle: string) {
+    this.http
+      .put<CommonResponse>(`${environment.baseURL}/todo-lists/${todoId}`, { title: todoTitle })
+      .pipe(
+        map(() => {
+          return this.todos$
+            .getValue()
+            .map((todo) => (todo.id !== todoId ? todo : { ...todo, title: todoTitle }));
+        }),
+      )
+      .subscribe((data) => {
+        this.todos$.next(data);
+      });
+  }
 }
