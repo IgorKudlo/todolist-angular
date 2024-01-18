@@ -8,10 +8,10 @@
     />
 
     <ng-template #todoTitleContent>
-      <p (dblclick)="editModeHandler()">{{ todo.title }}</p>
+      <b (dblclick)="editModeHandler()">{{ todo.title }}</b>
     </ng-template>
 
-    <button (click)="removeTodoHandler()">-</button>
+    <button (click)="removeTodoHandler()">x</button>
   </div>
 
   <tl-tasks [todolistId]="todo.id"></tl-tasks>
