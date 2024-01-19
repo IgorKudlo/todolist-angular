@@ -12,6 +12,8 @@ export interface Task {
   completed: boolean;
 }
 
+export type UpdateTaskModel = Omit<Task, 'id' | 'todoListId' | 'order' | 'addedDate'>;
+
 export interface GetTasksResponse {
   items: Task[];
   totalCount: number;
