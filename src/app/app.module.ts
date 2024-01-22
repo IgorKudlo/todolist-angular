@@ -3,23 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
-import { TodosModule } from './todos/todos.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    AuthModule,
-    TodosModule,
-    CoreModule,
-    SharedModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, CoreModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })
