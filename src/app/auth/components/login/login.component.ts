@@ -41,7 +41,6 @@ export class LoginComponent {
 
   onLoginSubmit() {
     const value = this.loginForm.value;
-    console.log(JSON.stringify(value));
     this.authService.login(value);
   }
 }
