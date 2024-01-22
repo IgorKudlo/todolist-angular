@@ -4,15 +4,12 @@ import { environment } from '../../../environments/environment';
 import { CommonResponse } from '../models/core.models';
 import { ResultCodeEnum } from '../enums/resultCode.enum';
 import { Router } from '@angular/router';
-
-export interface LoginRequestData {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-}
+import { LoginRequestData, MeResponse } from '../models/auth.models';
 
 @Injectable()
 export class AuthService {
+  isAuth = false;
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -37,6 +34,10 @@ export class AuthService {
   }
 
   me() {
-    this.http.get(`${environment.baseURL}/auth/me`).subscribe((res) => {});
+    this.http.get<CommonResponse<MeResponse>>(`${environment.baseURL}/auth/me`).subscribe((res) => {
+      if (res.resultCode === ResultCodeEnum.success) {
+        this.isAuth = true;
+      }
+    });
   }
 }
